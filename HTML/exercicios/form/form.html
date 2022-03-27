@@ -1,0 +1,54 @@
+<head>
+    <style>
+        input,
+        select, 
+        textarea{
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type='radio'],
+        input[type='checkbox']{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulário</h1>
+    <form action="http://localhost:3003/formulario" method="POST"> <!-- action(link) e metodo(get, post, delete)-->
+        <input type="hidden" name="id" value="3">
+        Nome:
+        <input type="text" name="nome">
+        Senha:
+        <input type="password" name="senha">
+        Resumo:
+        <textarea name="bio"  cols="30" rows="10"></textarea>
+        <div>
+            <input type="radio" name="tipo" value="admin" >Admin
+            <input type="radio" name="tipo" value="regular">Regular
+            <input type="radio" name="tipo" value="professor">Professor
+        </div>
+        <div>
+            <input type="checkbox" name="ativo">Ativo
+        </div>
+        <select name="estado" >
+            <option value="mg">Minas Gerais</option>
+            <option value="sp">São Paulo</option>
+            <option value="rj">Rio de Janeiro</option>
+            <option value="es">Espirito Santo</option>
+        </select>
+
+        <select name="interesses" multiple size="5">
+            <option value="javascript">JavaScript</option>
+            <option value="php">PHP</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="go">Go</option>
+        </select>
+        <button formaction="http://localhost:3003/formulario">Enviar</button>
+        <button formaction="http://localhost:3003/formulario/3" formmethod="post">Alterar</button>
+        <button formaction="http://localhost:3003/usuario" formmethod="get">enviar com get</button> 
+        <!--é possivel enviar formulario com get, porém os dados ficam na url, causando uma falha de segurança-->
+    </form>
+</body>
+</html>

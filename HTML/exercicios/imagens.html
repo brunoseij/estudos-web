@@ -1,0 +1,95 @@
+<div wm-slider>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+            alt="Muro da Cidade"
+            width="513" height="342"
+            title="Muro da Cidade por Tarso Bessa" 
+        ><!--alt é o que aparecerá quando a imagem não tiver carregado-->
+        <!--width e heigth podem distorcer as proporções da imagem (CUIDADO)-->
+    </p>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" 
+        alt="logo da cod3r"
+        height="342">
+    </p>
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Visão do Rio de Janeiro" height="342">
+    </p>
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" 
+        alt="Avatar" 
+        height="50"
+        style="float: left">
+            Textod snjkaasd fhjnasdbh fasdbjfhs dfbhjfdb hjf bh fsdbhjfs dbhjfsd bhjfasdbhj
+            fdfdbasjh kjbas kbdfkjdba skjbfdk jasbfjkhds bkfhjbds hjbfksbfd sahjbkdhjbfs dahjbbhadfjs
+            hjdfsab fhjdabfkbasfj ahksbf hjadbsf hjbad sfbad shjfbadshjb fhjadsbfa ksbdfads jhkf
+            fhjadsb fjkabsdfbadshjf bhjkads. 
+    </p>
+    <p>
+        <picture alt="logo"> <!--podem ser usadas varias imagens-->
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width: 600px)"> <!--a condição é definida com 'media'-->
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png">
+        </picture>
+    </p>
+    <p class="cidade"></p>
+</div>
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+    .circular{
+        width: 513px;
+        background-color: #444;
+    }
+    .texto{
+        width:400px
+    }
+    .texto img {
+        margin-right: 10px;
+    }
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+</style>
+<script>
+    function mover(elem, inicio, fim, passo, callback) { // função para mover uma imagem da esquerda para a direita
+        let novoInicio = inicio - passo // redefinindo a posição inicial
+        if (novoInicio >= fim){ 
+            elem.style.left = novoInicio + 'px' // aplicando a posição inicial na imagem
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7) // chamando a função novamente porém com um novo inicio (a cada 7 ms)
+        } else {
+            callback() // quando a posição chegar ao final, é chamado um callback (final do ciclo)
+        }    
+    }
+    function exibirSlide(slides, slide){// função que define a posição inicial e final
+        slide.style.display = 'block' // fazendo o slide aparecer
+        let inicio = innerWidth // tamanho da tela do browser
+        let final = -slide.clientWidth // tamanho do elemento (p no caso)
+         
+        slide.style.left = `${inicio}px` // colocando a imagem na posição inicial
+
+        mover(slide, inicio, final, 5, () => { // movendo a imagem até o final
+            slide.style.display = 'none'
+            exibirSlide(slides, getProximo(slides, slide)) // ao fim do movimento, um novo slide irá aparecer
+        })
+    }
+    function getProximo(lista, elemento){ // calcula qual o proximo slide
+        const indiceProximo = lista.indexOf(elemento) + 1
+        return indiceProximo < lista.length? lista[indiceProximo]:lista[0] 
+    }
+    function slider(){ // iniciaS
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        const slides = Array.from(elementos)
+        exibirSlide(slides, slides[0])
+    }
+    slider()
+
+</script>

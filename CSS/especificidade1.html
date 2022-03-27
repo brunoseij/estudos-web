@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+        /*
+        Ordem de prioridade
+        1. regra com !important (não utilizar)
+        2. seletores mais especificos
+        3. ultima regra processada (empate)
+        */
+        p.observacao{
+            padding: 2px;
+            background:linear-gradient(to bottom, salmon, white)
+        }
+        .observacao {
+            font-size: 100px;
+            padding: 200px !important;
+            background-color: green;
+            border: dashed 5px;
+        }
+        p {
+            background-color:grey;
+            text-align:center;
+            font-size: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>

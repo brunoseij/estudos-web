@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercicios</title>
+</head>
+<body>
+    <header>
+        <h1>Exercicios HTML</h1>
+    </header>  
+    <aside>
+        <nav>
+            <a href="/exercicios/00 - teste.html">Teste</a>|
+            <a href="/exercicios/01 - texto.html">Texto HTML</a>|
+            <a href="/exercicios/02 - texto 2.html">Texto HTML - 2</a>|
+            <a href="/exercicios/03 - listas.html">Listas</a>|
+            <a href="/exercicios/04 - listas 2.html">Listas Aninhadas</a>|
+            <a href="/exercicios/05 - links.html">Links</a>|
+            <a href="/exercicios/06 - tabelas.html">Tabelas</a>|
+            <a href="/exercicios/form/form.html">Formulario</a>|
+            <a href="/exercicios/imagens.html">Imagens</a>|
+            <a href="/exercicios/video.html">Video</a>|
+            <a href="/exercicios/tagsNaoVisuais.html">Tags não visuais</a>
+        </nav>
+    </aside>
+    <section id='conteudo'>
+
+    </section>
+
+    <script>
+    document.querySelectorAll('a').forEach(link=>{
+        var conteudo = document.getElementById('conteudo')
+
+        link.onclick = function(e) {
+            e.preventDefault()
+            fetch(link.href)
+                .then(resp => resp.text())
+                .then(html => conteudo.innerHTML = html)
+        }
+    })
+    
+    </script>
+</body>
+</html>

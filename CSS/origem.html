@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Origem CSS: Externo, Interno e Inline</title>
+    <style>
+        body {
+            background-color:aquamarine;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/externo.css">
+</head>
+
+<!--prioridade: inline >> (link = no doc)-->>
+<body style="background-color:bisque;"> <!-- evitar a utilização de estilos inline -->
+    <h1>E agora?</h1>
+</body>
+
+</html>

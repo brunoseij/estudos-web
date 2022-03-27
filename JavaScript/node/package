@@ -1,0 +1,26 @@
+o arquivo package.json contém informações sobre o projeto (pacote), como dependências do projeto, versão, scripts, etc
+esse arquivo pode ser criado com o comando npm init (desse modo, perguntará diversas informações sobre o projeto), ou npm init -y (colocará as informações padrões)
+
+é possivel instalar as dependencias direto na pasta do projeto (só estar nela ao usar o npm install), e salvar essas dependencias com suas respectivas versões no arquivo package.json
+
+npm i --save axios -> instalou o pacote axios, e salvou as informações sobre o pacote instalado no arquivo package.json
+quando se instala uma dependencia, é criado o arquivo package-lock.json, onde é salvo informações mais detalhadas sobre os pacotes
+
+no arquivo json, em uma versão de uma dependencia:
+"^0.17.1", o numero do meio poderá variar, (17, 18, 19, 20...)
+"~0.17.1", o ultimo numero poderá variar, (1, 2, 3, 4, 5, 6...)
+"0.17.1", é a versão exata do pacote
+
+
+não é necessário subir a pasta node_modules para o git, pois esta pode ser recriada facilmente atraves do comando npm i (se o arquivo package.json tiver sido criado)
+
+o nome do arquivo principal do projeto, por padrão é index.js, pode ser mudado
+
+para rodar scripts contidos no package.json, se o script for um nome padrão do node, é só utilizar npm nomeDoScript, senão, utilizar: npm run nomeDoScript
+
+
+
+
+
+
+
