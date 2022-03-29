@@ -5,7 +5,38 @@
     <meta charset="UTF-8">
     <title>Display</title>
     <style>
-        /* ... */
+        /*
+            display inline: todos os elementos ficam na mesma linha (não respeita width nem height)
+            display inline block: os elementos ficam na mesma linha respeitando width e height (muito utilizado para cardview, menu)
+            display block: cada elemento fica em uma linha
+            span: display inline
+            div: display block
+
+        */
+        body {
+            font-size: 40px;
+        }
+        ul {
+            padding:0;
+        }
+        div {
+            background-color: tomato;
+        }
+        span {
+            background-color: orange;
+        }
+        li {
+            background-color: coral;
+        }
+        div, span, li {
+            width: 50%;
+            width:200px;
+            height: 80px;
+            padding-top: 30px;
+            display:block;
+            display:inline;
+            display:inline-block;
+        }
     </style>
 </head>
 

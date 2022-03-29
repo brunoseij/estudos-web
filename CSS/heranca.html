@@ -4,8 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Herança</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <style>
-        /* ... */
+        /*
+            margin, padding
+            1 valor -> aplica em todos os lados da caixa
+            2 valores -> primeiro é para cima e baixo, o segundo é para os lados
+            4 valores -> sentido horario (cima, direita, baixo esquerda)
+        */
+        body {
+            font-family:'Ubuntu', sans-serif;
+            font-size:40px;
+            border: solid 3px red;
+            padding: 30px;
+        } /* por padrão, algumas propriedades (border, padding...) não são herdadas*/
+        div {
+            border:inherit; /* utilizado para herdar de camadas acima */
+            padding:inherit;
+        }
+
     </style>
 </head>
 

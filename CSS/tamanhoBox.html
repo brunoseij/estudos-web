@@ -4,8 +4,23 @@
     <meta charset="UTF-8">
     <title>Tamanho Box</title>
     <style>
+        /* seletor universal é um caso válido para aplicar border box em todos os elementos do html
+        * {
+            box-sizing: border-box;
+        }
+        */
         body {
             font-size: 45px;
+            margin: 0;
+        }
+        div {
+            background-color: deeppink;
+            width: 100%; /* por padrão, conta apenas o conteúdo */
+            padding: 300px;
+            border: solid 20px black; /* nesse caso, com a borda, ultrapassou o tamanho de 100% */
+            /* para corrigir isso, deve-se utilizar a propriedade box-sizing:border-box; com isso, o tamanho de 100% passa a ser aplicado contando a borda*/
+            box-sizing: border-box;
+            text-align: center;
         }
     </style>
 </head>

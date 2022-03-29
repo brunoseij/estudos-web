@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <title>Altura e Largura</title>
     <style>
+        html {
+            height: 100%;
+        }
         body {
             font-size: 40px;
             background-color: coral;
+            margin:0;
+            height: 100%;
         }
 
         div {
@@ -17,12 +22,19 @@
         span {
             background-color: dodgerblue;
         }
+        div, span {
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            /* valores relativos (%) utilizam como base o tamanho do elemento parent (html > body > div, span nesse caso) */
+            /* valores absolutos (px) aumentam o tamanho do body / html */
+        }
     </style>
 </head>
 
 <body>
-    <div>Título</div>
-    <span>Subtítulo</span>
+    <div>Título</div><span>Subtítulo</span> <!-- colocar os elementos lado a lado impede que ocorra o problema da quebra de linha para display inline-block -->
+    <!-- uma outra solução seria diminuir o tamanho dos elementos para encaixar (pode ocorrer de ficar um espaço entre) -->
 </body>
 
 </html>
