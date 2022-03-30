@@ -6,6 +6,58 @@
     <title>Position</title>
     <style>
         /* ... */
+        div {
+            border: solid 5px black;
+            padding: 30px;
+        }
+        .static {
+            /* posicionamento não funciona para static */
+            top: 5000px;
+            left: 300px;
+            background-color: tomato;
+        }
+        .fixed {
+            /* utilizando fixed, o elemento fica fixado em uma parte da tela, acompanhando o scroll */
+            position: fixed;
+            bottom: 50px;
+            right: 40px;
+            background-color: darkslategray;
+        }
+        .relative1 {
+            position: relative;
+            background-color: blueviolet;
+            /* posição em relação ao item anterior */
+            top:10px;
+            left:30px;
+        }
+        .absolute1 {
+            position: absolute;
+            background-color: blanchedalmond;
+            bottom: 100px;
+            right: 400px
+        }
+        .relative2 {
+            position: relative;
+            height: 240px;
+            width: 200px;
+            top: 400px;
+            background-color: grey;
+        }
+        .absolute2 {
+            /* absolute dentro de um relative ou absolute: a posição é em relação ao parent */
+            /* absolute dentro de um static: a posição é absoluta */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: yellow;
+        }
+        .sticky {
+            /* a div tem um posicionamento em relação ao conteúdo anterior, porém, ao rolar, acompanha */
+            position: -webkit-sticky; /* para funcionar o sticky no safari */
+            position: sticky;
+            top: 30px;
+            background-color: brown;
+        }
     </style>
 </head>
 

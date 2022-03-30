@@ -7,7 +7,91 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        /* 1 */
+        body {
+            margin:0;
+            font-family: 'Oswald';
+            background-color: rgb(202, 202, 202);
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        /* 10 */
+        .cabecalho {
+            position: relative;
+            background-color: #2A2B2A;
+            box-shadow:0 0 10px 0 #257AFD;
+        }
+        .menu {
+            display: inline-block;
+            position: absolute;
+            text-align: center;
+        }
+        .logo {
+            display: inline-block;
+        }
+        .autenticacao {
+            display: inline-block;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+        .botao {
+            padding: 10px 10px;
+            border-radius: 25px;
+            font-size: 1.2em
+        }
+        .destaque {
+            background-color: firebrick;
+        }
+        /* 11 */
+        .menu-toggle {
+            display: none;
+            color: white;
+            background-color: #2A2B2A;
+            border:solid 1px #777;
+            border-radius: 5px;
+        }
+        .menu ul{
+            padding: 0px;
+            margin-top: 25px;
+        }
+        .menu li{
+            display:inline-block;
+        }
+        .menu a {
+            padding: 15px 20px;
+        }
+        .logo img {
+            margin: 15px 40px 15px 10px;
+            width: 200px;
+        }
+        .autenticacao a {
+            margin: 10px;
+        }
+
+        .menu a:hover,
+        .menu a.selected{
+            background-color: #257AFD80;
+            color:black;
+        }
+        @media (max-width: 750px){
+            .autenticacao {
+                display: none;
+            }
+        }
+        @media (max-width: 572px){
+            .menu {
+                display: none;
+            }
+            .menu-toggle {
+                display: inline-block;
+                position: absolute;
+                right: 30px;
+                top: 25px;
+            }
+        }
     </style>
 </head>
 
@@ -44,6 +128,19 @@
     </header>
 
     <script>
+        window.onload = function(e){
+            let link = document.querySelector(`.menu [href='${location.hash}']`)
+            link.classList.add("selected")
+        }
+
+        window.onhashchange = function(e){
+            // e.oldURL e.newURL
+            document.querySelectorAll(`.menu a`).forEach(l => {
+                l.classList.remove("selected")
+            })
+            let link = document.querySelector(`.menu [href='${location.hash}']`)
+            link.classList.add("selected")
+        }
         // ...
     </script>
 </body>

@@ -6,6 +6,60 @@
     <title>Desafio Card</title>
     <style>
         /* ... */
+        * {
+            box-sizing: border-box;
+        }
+        div .cursos {
+            position: relative;
+            top: 0px;
+        }
+        .curso {
+            float:left;
+            position: relative;
+            top: 0px;
+            box-shadow: rgba(0, 0, 0, 0.60) 0px 5px 10px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            width: 250px;
+            height: 290px;
+            margin: 20px;
+            margin-top: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .curso img {
+            margin-top: 0px;
+            padding: 4px;
+            width: 100%;
+        }
+        .curso-info {
+            display: block;
+            height: 90px;
+            font-size: 1.4em;
+            overflow: hidden;
+        }
+        .curso-info h4{
+            margin: 0;
+            padding: 0px 10px 10px 10px;
+            font-weight: 60;
+        }
+        .curso-info p{
+            margin: 0px;
+            padding: 0px 10px 0px 10px;
+            font-size: 0.7em;
+        }
+        .curso-preco {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        .curso-preco .preco-de{
+            color: firebrick;
+            font-weight: 450;
+            text-decoration: line-through;
+        }
+        .curso-preco .preco-por{
+            font-size: 1.5em;
+            font-weight: 900;
+            color: darkgreen;
+        }
     </style>
 </head>
 
@@ -16,7 +70,7 @@
     <img src="http://files.cod3r.com.br/curso-web/card.png" height="340" alt="Objetivo">
 
     <h2>Resultado</h2>
-    <div>
+    <div class = "cursos">
         <div class="curso">
             <img src="http://files.cod3r.com.br/curso-web/curso1.jpg" />
             <div class="curso-info">
