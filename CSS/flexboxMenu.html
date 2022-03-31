@@ -51,9 +51,28 @@
             background: #f50a31;
             color: #fff;
         }
+        li a.selected {
+            background-color: #4faddb;
+            color: black;
+        }
         /* ==================== */
         /* Solução com Flex Box */
         /* ==================== */
+        .cabecalho {
+            display: flex;
+            align-items: center;
+        }
+        .menu ul{
+            display: flex;
+            width: 400px;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .autenticacao {
+            flex-grow: 1;
+            display: flex;
+            justify-content:flex-end;
+        }
     </style>
 </head>
 
@@ -85,6 +104,21 @@
             <a href="#registar" class="botao destaque">Registrar</a>
         </aside>
     </header>
+    <script>
+        window.onload = function(e){
+            let link = document.querySelector(`.menu [href='${location.hash}']`)
+            link.classList.add("selected")
+        }
+
+        window.onhashchange = function(e){
+            // e.oldURL e.newURL
+            document.querySelectorAll(`.menu a`).forEach(l => {
+                l.classList.remove("selected")
+            })
+            let link = document.querySelector(`.menu [href='${location.hash}']`)
+            link.classList.add("selected")
+        }
+    </script>
 </body>
 
 </html>

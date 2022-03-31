@@ -7,6 +7,38 @@
     <link rel="stylesheet" href="css/tag.css">
     <style>
         /* ... */
+        .flex-container {
+            display: flex;
+            width: 600px;
+            height: 400px;
+        }
+        .flex-container div:nth-child(3) {
+            background-color:chocolate;
+            /* quanto maior a ordem, mais pro final */
+            order: 1;
+            order: 0; /* padrão */
+            order: -1;
+            /* alinhamento de apenas um item no cross axis */
+            align-self: center;
+            align-self: stretch; /* padrão */
+        }
+        .flex-container div {
+            width: 100px;
+            /* flex grow pega o espaço vazio no container e divide-o entre os elementos utilizando média ponderada */
+            flex-grow: 0; /* padrão */
+            flex-grow: 1;
+        }
+        .flex-container div:nth-child(2) {
+            flex-grow: 3;
+        }
+        /* da mesma forma que existe o flex grow para conteineres maiores, existe o flex shrink para conteineres menores */
+        .flex-container {
+            width: 300px
+        }
+
+        .flex-container div:nth-child(1) {
+            flex-shrink: 3; /* quanto maior, menor o tamanho do item  */
+        }
     </style>
 </head>
 

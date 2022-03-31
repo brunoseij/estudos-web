@@ -7,6 +7,48 @@
     <link rel="stylesheet" href="css/tag.css">
     <style>
         /* ... */
+        .big {
+            font-size: 1.5em;
+        }
+        .flex-container{
+            /* por padrão, flexbox utiliza como main axis a horizontal */
+            display: flex;
+            /* mudança do main axis */
+            flex-direction: row; /* padrão */
+            flex-direction: column;
+            flex-direction: column-reverse;
+            flex-direction: row-reverse;
+            width: 50%;
+            flex-wrap: wrap;
+            flex-wrap: wrap-reverse; /* overflow vai para linha acima do conteúdo */
+            flex-flow: row wrap; /* definindo o main axis e o wrap */
+            height: 200px;
+            flex-flow: column-reverse wrap; /* wrap padrão = nowrap */
+            flex-flow: row wrap;
+
+            /* posicionamento no main axis */
+            justify-content: flex-start; /* alinha no main start */
+            justify-content: flex-end; /* alinha no main end */
+            justify-content: center;
+            justify-content: space-around; /* distribui igualmente com espaços ao redor */
+            justify-content: space-between; /* coloca espaços entre os flex items separando-os de maneira equidistante no flex container */
+
+            /* cross axis */
+            height: 400px;
+            /* alinhamento dos itens no cross axis (em relação um ao outro) */
+            align-items: stretch; /* estica os flex items para preencher os espaços vazios */
+            align-items: baseline; /* alinha os itens dentro do container utilizando a linha de base da fonte */
+            align-items: flex-start; /* alinha as caixas com base no topo dos flex items */
+            align-items: flex-end;
+            align-items: center;
+
+            /* alinhamento dos itens no cross axis (em relação ao flex container)  */
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-around;
+            align-content: space-between;
+        }    
     </style>
 </head>
 

@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="css/tag.css">
     <style>
         /* ... */
+        .flex-container {
+            display: flex;
+        }
+        .flex-container div{
+            flex-basis: 100px; /* define o tamanho do flex item (no main axis) */
+            /* flex-basis tem prioridade em relação à width e height*/
+        }
+        .flex-container div:nth-child(4){
+            /* grow shrink basis */
+            flex: 3 6 100px;
+        }
+        .flex-container {
+            width: 300px;
+        }
     </style>
 </head>
 
