@@ -6,11 +6,49 @@
     <title>CSS Grid #03</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        /* colocando nomes nos elementos */
+        main {
+            grid-area: conteudo;
+        }
+        header {
+            grid-area: cabecalho;
+        }
+        footer {
+            grid-area: rodape;
+        }
+        nav {
+            grid-area: navegacao;
+        }
+        body {
+            margin: 0px;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 100px 1fr 100px;
+            
+            grid-template-areas: 
+                'cabecalho cabecalho' /* como são duas colunas, é preciso repetir */
+                'navegacao conteudo'
+                'rodape rodape';
+        }
+        @media (max-width: 700px){
+            body {
+                grid-template-columns: 1fr;
+                grid-template-rows: 100px 1fr 100px;
+                grid-template-areas: 
+                'navegacao'
+                'conteudo'
+                'rodape';
+            }
+            header {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- colocar a tag main no inicio ajuda no SEO -->
     <main class="tag">CONTEÚDO</main>
     <header class="tag">CABEÇALHO</header>
     <footer class="tag">RODAPÉ</footer>
