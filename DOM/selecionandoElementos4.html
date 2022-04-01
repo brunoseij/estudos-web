@@ -23,6 +23,35 @@
     </div>
     <script>
         // ...
+        function log(){
+            console.log(this)
+        }
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() // div que contém o ul
+        lista.childNodes.log() // Nodelist (contém espaços entre as tags)
+
+        const primeiro = lista.firstChild // também pega espaços vazios
+        primeiro.log() // espaço entre ul e li que contém 'Pedro'
+        primeiro.nextSibling.log()
+
+        const ultimo = lista.lastChild
+        ultimo.log()
+        ultimo.previousSibling.log()
+
+        lista.children.log() // todas as tags filho
+        lista.firstElementChild.log() // primeira tag filho
+        lista.lastElementChild.log()
+
+        lista.parentNode.previousElementSibling.log() // primeira div da pagina
+        lista.parentNode.nextElementSibling.log() // ultima div da pagina
+
+        // se possivel, utilizar o querySelector ao invés de navegar por elementos
+        document.querySelectorAll('div ul li').log()
     </script>
 </body>
 

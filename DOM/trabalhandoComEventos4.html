@@ -32,5 +32,37 @@
     </form>
     <script>
         // ...
+        /*
+        const botao = document.querySelector('[wm-submit]')
+        botao.onclick = e => {
+            e.preventDefault()
+            const form = botao.parentElement // elemento formulário
+            const formData = new FormData(form) // dados do formulário
+            formData.append('ajax', true) // adicionando dados ao formulário
+
+            console.log(formData.get('q'))
+            console.log(formData.has('hl'))
+
+            for(let dado of formData){
+                console.log(dado)
+            }
+        }
+        */
+
+        const formulario = document.pesquisa
+        formulario.onsubmit = e => {
+            e.preventDefault()
+            const form = e.target // elemento formulário
+            const formData = new FormData(form) // dados do formulário
+            formData.append('ajax', true) // adicionando dados ao formulário
+
+            console.log(formData.get('q'))
+            console.log(formData.has('hl'))
+
+            for(let dado of formData){
+                console.log(dado)
+            }
+        }
+
     </script>
 </body>

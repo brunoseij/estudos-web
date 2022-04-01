@@ -10,7 +10,7 @@
 <body class='conteudo exercicio'>
     <div>
         <label for="compras">Compras</label>
-        <ul id="compras" destino='escritório' data-urgencia="5">
+        <ul id="compras" destino='escritório' data-urgencia="5" data-teste="true">
             <li>Café</li>
             <li>Água</li>
             <li>Copo Descartável</li>
@@ -18,6 +18,28 @@
     </div>
     <script>
         // ...
+        const lista = document.querySelector('div ul[destino="escritório"]') // #compras
+        console.log('elemento "ul"...............')
+        console.log('childNodes', lista.childNodes)
+        console.log('children', lista.children)
+        console.log('destino', lista.destino) // a notação . só funciona dessa maneira quando são atributos predefinidos
+        console.log('getAttribute', lista.getAttribute('destino'))
+        console.log('hasAttribute', lista.hasAttribute('destino'))
+        lista.setAttribute('destino', 'empresa') // atributo, valor
+        lista.setAttribute('status', 'aberto')
+        lista.removeAttribute('destino')
+        // atributos começados com 'data-' possuem um tratamento especial
+        // todos os atributos começados com data- ficam em um objeto dataset
+        console.log(lista.dataset)
+        console.log(lista.dataset.urgencia)
+        lista.dataset.urgencia = 4
+        console.log(lista.getAttribute('data-urgencia'))
+
+        // Cuidado
+        const label = document.querySelector('label')
+        console.log(label.for) // palavra reservada do JS
+        console.log(label.htmlFor) // utilização correta
+        console.log(label.getAttribute('for'))
     </script>
 </body>
 

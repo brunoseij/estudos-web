@@ -11,5 +11,16 @@
     <div>Elemento</div>
     <script>
         // ...
+        const item = document.querySelector('div')
+        item.style.position = 'absolute'
+
+        item.onmousemove = function(e){
+            const item = e.target // elemento html
+            item.style.cursor = 'move' // trocando o cursor
+            if(e.buttons) { // e.buttons = 1 se clicado
+                item.style.top = `${e.clientY - (item.clientHeight)/2}px`
+                item.style.left = `${e.clientX - (item.clientWidth)/2}px`
+            }
+        }
     </script>
 </body>
