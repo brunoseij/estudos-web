@@ -1,12 +1,16 @@
 const tela = document.querySelector('[wm-flappy]')
 let voando = false
-// teste mecanismo parar funções
 let colidiu = false
-const botao = document.querySelector('button')
-botao.onclick = (e) => {
-    colidiu = true
-    clearInterval(teste)
+
+// utilizado para inserir dinamicamente os obstaculos no HTML
+function clonar(elem, copias) {
+    for (let i = 0; i < copias; i++) {
+        let clone = elem.cloneNode(true)
+        clone.setAttribute('cano', (2 * Number(elem.attributes.cano.value) + i))
+        tela.appendChild(clone)
+    }
 }
+
 function numAleatorio(min, max) {
     const num = Math.random() * (max - min) + min
     return num
@@ -19,15 +23,19 @@ function sortearAltura(elem) {
     elem.children[1].style.height = (80 - posicao) + '%' 
 }
 
-
 // movimentação dos obstáculos
 function mover(elem, callback, inicio = 900, fim = -100, passo = 1, taxa = 7) {
     if (!colidiu) {
-        let novoInicio = inicio - passo
+        const novoInicio = inicio - passo
         if (novoInicio == fim) {
-            console.log('cabou')
             callback(elem)
         } else {
+            if(novoInicio >= 305 && novoInicio<= 438){
+                elem.classList.add('destaque')
+            } else if(novoInicio == 304) {
+                elem.classList.remove('destaque')
+                adicionarPonto()
+            }
             elem.style.left = novoInicio + 'px'
             setTimeout(() => mover(elem, callback, novoInicio), taxa)
         }
@@ -57,13 +65,33 @@ function verificarPosicao(elem) {
     }
 }
 
-// utilizado para inserir dinamicamente os obstaculos no HTML
-function clonar(elem, copias) {
-    for (let i = 0; i < copias; i++) {
-        let clone = elem.cloneNode(true)
-        clone.setAttribute('cano', (2 * Number(elem.attributes.cano.value) + i))
-        tela.appendChild(clone)
+function voar(){ // essa função será chamada a cada 7ms, controla o movimento do passaro
+    const passaro = document.querySelector('[bird] img')
+    const posicaoPassaro = passaro.offsetTop
+    verificarColisao(posicaoPassaro, passaro)
+    const limiteInferior = tela.offsetHeight - passaro.offsetHeight
+    if(!colidiu){
+        if(voando){
+            passaro.style.top = posicaoPassaro > 0? passaro.offsetTop - 3 + 'px': passaro.offsetTop + 'px'
+        } else{
+            passaro.style.top = posicaoPassaro < limiteInferior? passaro.offsetTop + 1.5 + 'px': passaro.offsetTop + 'px'
+        }
     }
+}
+
+function verificarColisao(pos, passaro){
+    const obstSuperior = document.querySelector('.destaque .cima')
+    if (obstSuperior){
+        if (pos <= obstSuperior.offsetHeight || pos >= obstSuperior.offsetHeight + 106 - passaro.offsetHeight){
+            colidiu = true
+        }
+
+    }
+}
+
+function adicionarPonto(){
+    const contador = document.getElementById('contador')
+    contador.innerHTML++
 }
 
 function iniciar() {
@@ -72,9 +100,10 @@ function iniciar() {
     canos.forEach((cano, indice) => {
         indice == 0? mover(cano, redefinirPosicao):redefinirPosicao(cano) // inicio do movimento, se for o primeiro obstaculo, se move, se for os seguintes, prepara o movimento
     })
-    
-    
+    setInterval(voar, 7)
 }
+
+iniciar()
 
 window.onkeydown = function(e){
     voando = true
@@ -83,22 +112,3 @@ window.onkeydown = function(e){
 window.onkeyup = function(e){
     voando = false
 }
-
-const teste = setInterval(voar, 7)
-
-function voar(){
-    console.log('alo')
-    const passaro = document.querySelector('[bird] img')
-    const posicaoPassaro = passaro.offsetTop // 550 - tamanhoPassaro limite inferior / 0 + tamanhoPassaro = limite superior
-    const limiteInferior = tela.offsetHeight - passaro.offsetHeight
-    if(!colidiu){
-        if(voando){
-            passaro.style.top = posicaoPassaro > 0? passaro.offsetTop - 2.5 + 'px': passaro.offsetTop + 'px'
-        } else{
-            passaro.style.top = posicaoPassaro < limiteInferior? passaro.offsetTop + 1.5 + 'px': passaro.offsetTop + 'px'
-        }
-    }
-}
-
-iniciar()
-// adicionar colisões, contagem de pontos
