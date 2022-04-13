@@ -12,5 +12,18 @@
 
     <script>
         // ...
+        const url = 'dados/estados.json'
+        fetch(url) // alternativa para XMLHttpRequest (promise assincrono) https://developer.mozilla.org/en-US/docs/Web/API/fetch
+            .then(resp => resp.json()) // no fetch, é necessário converter para json
+            .then(estados => {
+                const itens = estados.reduce((html, estado) => html + `<li>${estado.nome}</li>`, '')
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            })
+            .catch(e => document.body.insertAdjacentHTML('beforeend', `<p>${e}</p>`))
+    /* 
+        A fetch() promise only rejects when a network error is encountered (which is usually when there's a permissions issue or similar). 
+        A fetch() promise does not reject on HTTP errors (404, etc.). 
+        Instead, a then() handler must check the Response.ok and/or Response.status properties. 
+    */
     </script>
 </body>

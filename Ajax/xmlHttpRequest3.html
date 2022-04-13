@@ -11,6 +11,41 @@
     <h1>Estados</h1>
 
     <script>
+        function ajax(config){
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+
+            xhr.onreadystatechange = e => { //https://xhr.spec.whatwg.org/#handler-xhr-onreadystatechange
+                if (xhr.readyState == 4){
+                    if (xhr.status == 200){
+                        config.sucesso(xhr.responseXML)
+                    } else if (xhr.status >= 400){
+                        config.erro({
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            xhr.send()
+        }
         // ...
+        ajax({
+            url: 'dados/estados.xml',
+            metodo: 'get',
+            sucesso(res){
+                const estados = res.getElementsByTagName('estado')
+                console.log(estados)
+                const itens = Array.from(estados).reduce(
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, '')
+                console.log(itens)
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+                console.log('aaaa')
+            },
+            erro({codigo, texto}){
+                document.body.appendChild(document.createTextNode(`${codigo}:${texto}`))
+            }
+        })
     </script>
 </body>

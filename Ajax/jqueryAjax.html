@@ -15,5 +15,41 @@
 
     <script>
         // ...
+        function exibirResultado(id, resp){
+            console.log(resp)
+            const elemento = document.getElementById(id)
+            elemento.innerHTML = JSON.stringify(resp)
+        }
+        function exibirErro(id, erro){
+            const elemento = document.getElementById(id)
+            elemento.innerHTML = `${erro.status}: ${erro.statusText}`
+        }
+        // jquery é referenciado com $
+        $.ajax({
+            url: '/parOuImpar',
+            data: {
+                numero: 7
+            },
+            success(data) {
+                exibirResultado('get', data)
+            },
+            error(e){
+                exibirErro('get', e)
+            }
+        })
+        $.ajax({
+            url: 'formulario',
+            method: 'post',
+            data: {
+                nome: 'João',
+                sobrenome: 'Silva'
+            },
+            success(data) {
+                exibirResultado('post', data)
+            },
+            error(e){
+                exibirErro('post', e)
+            }
+        })
     </script>
 </body>

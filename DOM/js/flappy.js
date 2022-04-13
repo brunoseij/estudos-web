@@ -58,11 +58,7 @@ function posCanoAFrente(atual) {
 
 // loop verificando a posição do obstáculo a frente, caso o elemento à frente chegue na posição esperada, o movimento é iniciado
 function verificarPosicao(elem) {
-    if (posCanoAFrente(elem) == '600px') {
-        mover(elem, redefinirPosicao)
-    } else {
-        setTimeout(() => verificarPosicao(elem), 7)
-    }
+    posCanoAFrente(elem) == '600px'? mover(elem, redefinirPosicao) : setTimeout(() => verificarPosicao(elem), 7)
 }
 
 function voar(){ // essa função será chamada a cada 7ms, controla o movimento do passaro
@@ -82,10 +78,7 @@ function voar(){ // essa função será chamada a cada 7ms, controla o movimento
 function verificarColisao(pos, passaro){
     const obstSuperior = document.querySelector('.destaque .cima')
     if (obstSuperior){
-        if (pos <= obstSuperior.offsetHeight || pos >= obstSuperior.offsetHeight + 106 - passaro.offsetHeight){
-            colidiu = true
-        }
-
+        colidiu = pos <= obstSuperior.offsetHeight || pos >= obstSuperior.offsetHeight + 106 - passaro.offsetHeight
     }
 }
 
