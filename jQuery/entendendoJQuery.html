@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        // ...
+        $('div').hide(1000).show(1000).fadeOut(1000) // jQuery é referenciado com o simbolo de $
+        // $() serve como um seletor, disponibiliza varias novas funcionalidades para o objeto (padrao decorator)
+        console.log($('div').get(0)) // retorna o elemento html (sem as funções do jquery)
+        console.log($.isEmptyObject({ nome: 'Jones' }))
+        console.log($.inArray(3, [1, 2, 3, 4])) // retorna o index se pertencer ao array, ou retorna -1
+
+        // extendendo funcionalidades do jQuery
+        $.fn.trocarCorFundo = function(cor = '#5b1023'){
+            this.css('background-color', cor)
+            return this // torna possivel o encadeamento de chamadas (chaining)
+        }
+
+        $('body').trocarCorFundo().fadeOut(1000)
+    </script>
+</body>

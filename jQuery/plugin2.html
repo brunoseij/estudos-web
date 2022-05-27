@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Plugin #02</title>
+    <link rel='stylesheet' href='css/temporizador.css'>
+    <style>
+        form > *{
+            border:none;
+            border-radius: 8px;
+            margin:5px auto;
+            color:black;
+            font-size: 1.5em;
+        }
+        #tempo-alvo{
+            padding: 2px 0 2px 4px;
+        }
+        #iniciar{
+            display: block;
+            margin:5px auto;
+            background-color: #FFF;
+
+            
+        }
+    </style>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body>
+    <h1>Plugin #02 - Temporizador</h1>
+    <div></div>
+    <script src="js/temporizador.js"></script>
+    <script>
+        // ...
+        const form = $('<form>')
+        const label = $('<label for="tempo-alvo">Escolha um horário: </label>')
+        const input = $('<input id="tempo-alvo" type="time" step="2">')
+        const botao = $('<button id="iniciar">').html('Iniciar')
+        form.append(label, input, botao)
+        form.insertAfter('div')
+        botao.click(e => {
+            e.preventDefault()
+            if($("#tempo-alvo").val().match(/(\d\d):(\d\d):(\d\d)/)){
+                $('div').temporizador({ horario: $("#tempo-alvo").val(), mensagem: 'Contando...' })
+                form.css('display', 'none')
+            }
+        })
+        
+    </script>
+</body>

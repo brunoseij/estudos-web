@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando CSS</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando CSS</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='div3'>3</div>
+    <div id='resultado'></div>
+    <script>
+        // ...
+        const temClasse = (div, classe) => {
+            const temClasse = $(`#${div}`).hasClass(classe)
+            $('#resultado').append(`<p>a ${div} tem a classe ${classe}? ${temClasse}<\p>`)
+        }
+        const fonte = $('#div1').css('font-family')
+        $('#resultado').html(`<p>A fonte é: ${fonte}<\p>`)
+        $('#div1').css({'font-size': '3em', 'color':'blue'})
+        $('#div2').css('font-size', function(){
+            return `${2*2}em`
+        })
+        $('#div3').toggleClass('destaque')
+        temClasse('div3', 'destaque')
+        $('#div3').removeClass('destaque')
+        temClasse('div3', 'destaque')
+    </script>
+</body>
